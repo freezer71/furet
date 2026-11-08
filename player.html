@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lecteur</title>
+    <link rel="icon" href="icons/icon32.png" />
+    <link rel="stylesheet" href="player.css" />
+  </head>
+  <body>
+    <div id="stage" class="stage idle-ok" tabindex="-1">
+      <video id="video" playsinline></video>
+
+      <div id="spinner" class="spinner" hidden></div>
+      <div id="flash" class="flash"></div>
+      <div id="skip-left" class="skip left"><span></span></div>
+      <div id="skip-right" class="skip right"><span></span></div>
+      <div id="bigplay" class="bigplay" hidden><span data-icon="play"></span></div>
+
+      <div class="topbar">
+        <div class="titlebox">
+          <div id="title" class="title"></div>
+          <a id="source-link" class="source" target="_blank" rel="noreferrer"></a>
+        </div>
+        <div class="top-actions">
+          <button id="btn-copy" class="cbtn" title="Copier le lien de la vidéo" data-icon="copy"></button>
+          <button id="btn-download" class="cbtn" title="Télécharger" data-icon="download" hidden></button>
+          <button id="btn-newsrc" class="cbtn" title="Ouvrir un autre lien" data-icon="link"></button>
+        </div>
+      </div>
+
+      <div id="stats" class="stats" hidden></div>
+
+      <div class="controls" id="controls">
+        <div id="seek" class="seek" role="slider" aria-label="Position" tabindex="0">
+          <div class="rail">
+            <div id="buffered" class="buffered"></div>
+            <div id="hoverfill" class="hoverfill"></div>
+            <div id="played" class="played"></div>
+            <div id="knob" class="knob"></div>
+          </div>
+          <div id="tip" class="tip">
+            <div class="tip-frame"><video id="preview" muted playsinline></video></div>
+            <span id="tip-time">0:00</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="btn-play" class="cbtn big" title="Lecture (k)" data-icon="play"></button>
+          <button id="btn-back" class="cbtn" title="Reculer de 10 s (j)" data-icon="back10"></button>
+          <button id="btn-fwd" class="cbtn" title="Avancer de 10 s (l)" data-icon="fwd10"></button>
+          <div class="volume">
+            <button id="btn-mute" class="cbtn" title="Couper le son (m)" data-icon="volHigh"></button>
+            <input id="vol" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+          </div>
+          <button id="time" class="time" title="Afficher le temps restant">
+            <span id="cur">0:00</span><span class="sep">/</span><span id="dur">0:00</span>
+          </button>
+          <div class="grow"></div>
+          <button id="btn-speed" class="pill" title="Vitesse">1×</button>
+          <button id="btn-cc" class="cbtn" title="Sous-titres (c)" data-icon="cc" hidden></button>
+          <button id="btn-loop" class="cbtn" title="Lecture en boucle (r)" data-icon="loop"></button>
+          <button id="btn-shot" class="cbtn" title="Capture d'image (s)" data-icon="camera"></button>
+          <button id="btn-settings" class="cbtn" title="Réglages" data-icon="settings"></button>
+          <button id="btn-pip" class="cbtn" title="Image dans l'image (p)" data-icon="pip"></button>
+          <button id="btn-fs" class="cbtn" title="Plein écran (f)" data-icon="fullscreen"></button>
+        </div>
+      </div>
+
+      <div id="menu" class="menu" hidden></div>
+
+      <div id="error" class="overlay error" hidden>
+        <div class="card">
+          <div class="ico" data-icon="alert"></div>
+          <h2 id="error-title">Lecture impossible</h2>
+          <p id="error-text"></p>
+          <div class="btns">
+            <button id="error-retry" class="btn primary">Réessayer</button>
+            <a id="error-open" class="btn" target="_blank" rel="noreferrer">Ouvrir le lien brut</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="open" class="overlay open" hidden>
+        <form id="open-form" class="card">
+          <div class="ico" data-icon="link"></div>
+          <h2>Ouvrir une vidéo</h2>
+          <p>Collez un lien direct (.mp4, .webm, .m3u8…).</p>
+          <input id="open-url" type="url" placeholder="https://…/video.m3u8" required autocomplete="off" />
+          <input id="open-ref" type="url" placeholder="Page d'origine (facultatif, pour le Referer)" autocomplete="off" />
+          <div class="btns">
+            <button type="submit" class="btn primary">Lire</button>
+            <button type="button" id="open-cancel" class="btn">Annuler</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="help" class="overlay help" hidden>
+        <div class="card wide">
+          <button id="help-close" class="cbtn close" data-icon="close" title="Fermer"></button>
+          <h2>Raccourcis clavier</h2>
+          <dl>
+            <dt><kbd>Espace</kbd> <kbd>K</kbd></dt><dd>Lecture / pause</dd>
+            <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Reculer / avancer de 5 s</dd>
+            <dt><kbd>J</kbd> <kbd>L</kbd></dt><dd>Reculer / avancer de 10 s</dd>
+            <dt><kbd>Maj</kbd>+<kbd>←</kbd> <kbd>→</kbd></dt><dd>Reculer / avancer de 30 s</dd>
+            <dt><kbd>,</kbd> <kbd>.</kbd></dt><dd>Image précédente / suivante (en pause)</dd>
+            <dt><kbd>0</kbd>…<kbd>9</kbd></dt><dd>Aller à 0 %…90 %</dd>
+            <dt><kbd>Début</kbd> <kbd>Fin</kbd></dt><dd>Aller au début / à la fin</dd>
+            <dt><kbd>↑</kbd> <kbd>↓</kbd></dt><dd>Volume + / −</dd>
+            <dt><kbd>M</kbd></dt><dd>Couper le son</dd>
+            <dt><kbd>&lt;</kbd> <kbd>&gt;</kbd></dt><dd>Vitesse − / +</dd>
+            <dt><kbd>F</kbd> / double-clic</dt><dd>Plein écran</dd>
+            <dt>Double-clic sur les côtés</dt><dd>Reculer / avancer de 10 s</dd>
+            <dt><kbd>P</kbd></dt><dd>Image dans l'image</dd>
+            <dt><kbd>C</kbd></dt><dd>Sous-titres</dd>
+            <dt><kbd>R</kbd></dt><dd>Boucle</dd>
+            <dt><kbd>S</kbd></dt><dd>Capture d'image</dd>
+            <dt><kbd>I</kbd></dt><dd>Informations techniques</dd>
+            <dt><kbd>?</kbd></dt><dd>Cette aide</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div id="toast" class="toast" role="status"></div>
+      <input id="subs-file" type="file" accept=".vtt,.srt,text/vtt" hidden />
+    </div>
+
+    <script src="lib/hls.min.js"></script>
+    <script type="module" src="player.js"></script>
+  </body>
+</html>
