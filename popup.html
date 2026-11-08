@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sources vidéo</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img class="logo" src="icons/icon32.png" alt="" />
+      <div class="titles">
+        <h1>Sources vidéo</h1>
+        <p id="page-host" class="sub">…</p>
+      </div>
+      <button id="btn-player" class="icon-btn" title="Ouvrir le lecteur (coller un lien)" data-icon="link"></button>
+      <button id="btn-refresh" class="icon-btn" title="Relancer la détection" data-icon="refresh"></button>
+    </header>
+
+    <main id="list" class="list" aria-live="polite">
+      <div class="loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </main>
+
+    <footer id="footer" class="foot" hidden>
+      <span id="count"></span>
+      <button id="btn-reload" class="link-btn">Rien ne manque ? Recharger la page</button>
+    </footer>
+
+    <template id="tpl-card">
+      <article class="card">
+        <div class="thumb">
+          <div class="ph" data-icon="film"></div>
+          <span class="kind"></span>
+          <span class="dur" hidden></span>
+          <span class="live" hidden>DIRECT</span>
+          <span class="now" hidden>EN LECTURE</span>
+        </div>
+        <div class="body">
+          <div class="name"></div>
+          <div class="meta"></div>
+          <div class="note" hidden></div>
+          <div class="actions">
+            <button class="btn primary act-play"><span data-icon="play"></span>Lecteur</button>
+            <button class="icon-btn act-copy" title="Copier le lien" data-icon="copy"></button>
+            <button class="icon-btn act-dl" title="Télécharger" data-icon="download"></button>
+            <button class="icon-btn act-ffmpeg" title="Copier la commande ffmpeg (téléchargement du flux)" data-icon="terminal"></button>
+            <button class="icon-btn act-open" title="Ouvrir le lien brut dans un onglet" data-icon="external"></button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="lib/hls.min.js"></script>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
