@@ -9,7 +9,7 @@ let chain = Promise.resolve();
 // Toutes les lectures/écritures passent par cette file pour éviter les courses.
 const serial = (fn) => {
   const run = chain.then(fn);
-  chain = run.catch((e) => console.warn('[sources-video]', e));
+  chain = run.catch((e) => console.warn('[furet]', e));
   return run;
 };
 

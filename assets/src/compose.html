@@ -212,7 +212,7 @@
         font-size: 25px;
       }
       body.promo .tag {
-        font-size: 17px;
+        font-size: 15.5px;
       }
       body.promo .popup {
         left: 150px;
@@ -312,18 +312,18 @@
       document.documentElement.style.setProperty('--h', `${h}px`);
       document.body.className = v;
 
-      const brand = `<div class="brand"><img src="../logo.svg" alt=""><h1>Sources vidéo</h1></div>`;
+      const brand = `<div class="brand"><img src="../logo.svg" alt=""><h1>Furet</h1></div>`;
       const chips = `<div class="chips"><span>HLS</span><span>MP4</span><span>WebM</span><span>DASH</span></div>`;
       const shot = (cls, src) => `<div class="shot ${cls}"><img src="../screenshots/${src}" alt=""></div>`;
       const html = {
-        banner: `<div class="copy">${brand}<p class="tag">Toutes les vidéos d'une page,<br><em>en un clic.</em></p>
+        banner: `<div class="copy">${brand}<p class="tag">Toutes les vidéos de la page,<br><em>dénichées en un clic.</em></p>
           <p class="sub">Aperçu, durée et lien direct de chaque vidéo, et un lecteur complet pour la regarder.</p>${chips}</div>
           ${shot('player', 'player.png')}${shot('popup', 'popup.png')}`,
-        social: `<div class="copy">${brand}<p class="tag">Toutes les vidéos d'une page, <em>en un clic.</em></p>
+        social: `<div class="copy">${brand}<p class="tag">Toutes les vidéos de la page, <em>dénichées en un clic.</em></p>
           <p class="sub">Aperçu, durée et lien direct de chaque vidéo, et un lecteur complet pour la regarder.</p>${chips}</div>
           ${shot('player', 'player.png')}${shot('popup', 'popup.png')}`,
-        promo: `<div class="copy">${brand}<p class="tag">Toutes les vidéos d'une page, <em>en un clic.</em></p></div>${shot('popup', 'popup.png')}`,
-        marquee: `<div class="copy">${brand}<p class="tag">Toutes les vidéos d'une page,<br><em>en un clic.</em></p>
+        promo: `<div class="copy">${brand}<p class="tag">Toutes les vidéos de la page, <em>dénichées en un clic.</em></p></div>${shot('popup', 'popup.png')}`,
+        marquee: `<div class="copy">${brand}<p class="tag">Toutes les vidéos de la page,<br><em>dénichées en un clic.</em></p>
           <p class="sub">Aperçu, durée et lien direct de chaque vidéo, et un lecteur complet pour la regarder.</p>${chips}</div>
           ${shot('player', 'player.png')}${shot('popup', 'popup.png')}`,
         shot1: `<div class="backdrop"></div><p class="caption">Toutes les vidéos de la page, avec aperçu et durée.

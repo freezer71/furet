@@ -195,7 +195,7 @@ $('error-retry').addEventListener('click', () => {
 function updateHeader() {
   const name = state.title || shortName(state.src);
   $('title').textContent = name;
-  document.title = `${name} · Lecteur`;
+  document.title = `${name} · Furet`;
   const a = $('source-link');
   if (state.ref) {
     a.textContent = `Depuis ${host(state.ref)}`;

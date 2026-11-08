@@ -1,10 +1,10 @@
-<p align="center"><img src="assets/banner.png" alt="Sources vidéo — every video on a page, in one click"></p>
+<p align="center"><img src="assets/banner.png" alt="Furet — every video on the page, sniffed out in one click"></p>
 
-# Sources vidéo — Chrome extension
+# Furet — Chrome extension
 
 🇫🇷 [Version française](README.md)
 
-One click on the toolbar icon lists every video on the current page (thumbnail, duration, quality, size) and lets you:
+**Furet** (French for *ferret*) noses around the page and sniffs out every video. One click on the toolbar icon lists them (thumbnail, duration, quality, size) and lets you:
 
 - **open the video in the extension's own player**;
 - copy the direct link;
@@ -30,7 +30,7 @@ One click on the toolbar icon lists every video on the current page (thumbnail, 
 
 ### From the release (easiest)
 
-1. Download `sources-video-vX.Y.Z.zip` from the [releases page](https://github.com/freezer71/extension-sources-video/releases/latest).
+1. Download `furet-vX.Y.Z.zip` from the [releases page](https://github.com/freezer71/furet/releases/latest).
 2. **Unzip** it into a folder you will keep (Chrome loads the extension from that folder, so don't delete it).
 3. Open `chrome://extensions` and turn on **Developer mode** (top right).
 4. Click **Load unpacked** and pick the unzipped folder (the one containing `manifest.json`).
@@ -43,7 +43,7 @@ To update: unzip the new version in the same place, then click ⟳ on the extens
 ### From source
 
 ```bash
-git clone https://github.com/freezer71/extension-sources-video.git
+git clone https://github.com/freezer71/furet.git
 ```
 
 Then follow steps 3–5 above with the cloned folder.
@@ -51,7 +51,7 @@ Then follow steps 3–5 above with the cloned folder.
 ### Build the zip yourself
 
 ```bash
-./scripts/package.sh   # → dist/sources-video-v<version>.zip
+./scripts/package.sh   # → dist/furet-v<version>.zip
 ```
 
 ## Usage
