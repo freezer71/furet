@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="Sources vidéo — every video on a page, in one click"></p>
+
 # Sources vidéo — Chrome extension
 
 🇫🇷 [Version française](README.md)
@@ -9,6 +11,20 @@ One click on the toolbar icon lists every video on the current page (thumbnail, 
 - download the file (MP4, WebM…);
 - copy a ready-to-run `ffmpeg` command for HLS/DASH streams;
 - open the raw link in a new tab.
+
+## Screenshots
+
+<p align="center">
+  <img src="assets/screenshots/popup.png" width="440" alt="The popup lists the page's videos with thumbnail, duration, quality and actions">
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/player.png" alt="The extension's player, with a frame preview when hovering the seek bar">
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/player-quality.png" alt="Quality menu in the player">
+</p>
 
 ## Installation
 
@@ -84,3 +100,17 @@ Keyboard shortcuts (`?` in the player shows them all):
 - **DASH**: listed and copyable (`ffmpeg` command), but not played by the player.
 - **Signed links**: some expire after a few minutes or are tied to your session. On a 403 error, restart the video on the site and reopen it from the extension.
 - YouTube and a few large sites split videos in non-standard chunks: they won't show up as a single source.
+
+## Logo and visuals
+
+| File | Use |
+| --- | --- |
+| `assets/logo.svg` | Vector logo (48 and 128 px icons) |
+| `assets/logo-small.svg` | Simplified variant for small sizes (16 and 32 px) |
+| `assets/banner.png` | README banner |
+| `assets/social-preview.png` | Repository social preview (1280×640) |
+| `assets/store/` | Chrome Web Store visuals: 440×280 tile, 1400×560 marquee, 1280×800 screenshots |
+| `assets/screenshots/` | Popup and player screenshots |
+| `assets/src/compose.html` | Source of the composed visuals (`?v=banner`, `social`, `promo`, `marquee`, `shot1`, `shot2`) |
+
+Screenshots were taken on a generated demo video (animated gradients), served from the fictional domains `demo.example` and `cdn.example`.

@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="Sources vidéo — toutes les vidéos d'une page, en un clic"></p>
+
 # Sources vidéo — extension Chrome
 
 🇬🇧 [English version](README.en.md)
@@ -9,6 +11,20 @@ Un clic sur l'icône liste toutes les vidéos de la page (miniature, durée, qua
 - télécharger le fichier (MP4, WebM…) ;
 - copier une commande `ffmpeg` prête à l'emploi pour les flux HLS/DASH ;
 - ouvrir le lien brut dans un onglet.
+
+## Aperçu
+
+<p align="center">
+  <img src="assets/screenshots/popup.png" width="440" alt="La popup liste les vidéos de la page avec miniature, durée, qualité et actions">
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/player.png" alt="Le lecteur de l'extension, avec l'aperçu de l'image au survol de la barre de progression">
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/player-quality.png" alt="Le menu de choix de la qualité dans le lecteur">
+</p>
 
 ## Installation
 
@@ -85,3 +101,17 @@ Raccourcis clavier (`?` dans le lecteur pour la liste complète) :
 - **DASH** : listé et copiable (commande `ffmpeg`), mais pas lu par le lecteur.
 - **Liens signés** : certains expirent au bout de quelques minutes ou sont liés à la session. En cas d'erreur 403, relancez la vidéo sur le site puis rouvrez-la depuis l'extension.
 - YouTube et quelques gros sites découpent la vidéo en morceaux non standard : ils n'apparaîtront pas comme une source unique.
+
+## Logo et visuels
+
+| Fichier | Usage |
+| --- | --- |
+| `assets/logo.svg` | Logo vectoriel (icônes 48 et 128 px) |
+| `assets/logo-small.svg` | Variante simplifiée pour les petites tailles (16 et 32 px) |
+| `assets/banner.png` | Bannière du README |
+| `assets/social-preview.png` | Image de partage du dépôt (1280×640) |
+| `assets/store/` | Visuels au format Chrome Web Store : vignette 440×280, bandeau 1400×560, captures 1280×800 |
+| `assets/screenshots/` | Captures de la popup et du lecteur |
+| `assets/src/compose.html` | Source des visuels composés (`?v=banner`, `social`, `promo`, `marquee`, `shot1`, `shot2`) |
+
+Les captures ont été faites sur une vidéo de démonstration générée (dégradés animés), servie depuis des domaines fictifs `demo.example` et `cdn.example`.
