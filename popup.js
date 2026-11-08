@@ -331,7 +331,7 @@ async function copy(text, btn, label) {
 
 function openPlayer(e) {
   const p = new URLSearchParams({ src: e.url, kind: e.kind, ref: pageUrl, title: tab.title || '' });
-  chrome.tabs.create({ url: chrome.runtime.getURL(`player.html?${p}`), index: tab.index + 1 });
+  chrome.tabs.create({ url: chrome.runtime.getURL(`player.html?${p}`), index: tab.index + 1, windowId: tab.windowId });
 }
 
 function renderCard(e) {
@@ -370,7 +370,7 @@ function renderCard(e) {
   play.addEventListener('click', () => openPlayer(e));
   card.querySelector('.act-copy').addEventListener('click', (ev) => copy(e.url, ev.currentTarget, 'Lien copié'));
   card.querySelector('.act-ffmpeg').addEventListener('click', (ev) => copy(ffmpegCommand(e), ev.currentTarget, 'Commande ffmpeg copiée'));
-  card.querySelector('.act-open').addEventListener('click', () => chrome.tabs.create({ url: e.url, index: tab.index + 1 }));
+  card.querySelector('.act-open').addEventListener('click', () => chrome.tabs.create({ url: e.url, index: tab.index + 1, windowId: tab.windowId }));
   card.querySelector('.act-dl').addEventListener('click', () => {
     chrome.downloads.download({ url: e.url }).then(
       () => toast('Téléchargement lancé'),
@@ -453,7 +453,7 @@ async function init() {
   tab = forced ? await chrome.tabs.get(+forced) : (await chrome.tabs.query({ active: true, currentWindow: true }))[0];
   $('#btn-refresh').addEventListener('click', run);
   $('#btn-reload').addEventListener('click', reloadPage);
-  $('#btn-player').addEventListener('click', () => chrome.tabs.create({ url: chrome.runtime.getURL('player.html'), index: tab.index + 1 }));
+  $('#btn-player').addEventListener('click', () => chrome.tabs.create({ url: chrome.runtime.getURL('player.html'), index: tab.index + 1, windowId: tab.windowId }));
   await run();
 }
 
